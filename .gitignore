@@ -1,0 +1,18 @@
+# Ignore all environment files everywhere
+**/.env
+**/.env.*
+!.env.example
+
+# Node / Next / build junk (since you’re microservices + frontend)
+**/node_modules/
+**/dist/
+**/.next/
+**/out/
+
+# Logs
+**/*.log
+
+# OS / editor crap
+.DS_Store
+.vscode/
+.idea/
