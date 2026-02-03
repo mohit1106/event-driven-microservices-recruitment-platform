@@ -27,11 +27,8 @@ export const getUserProfile = TryCatch(async (req, res, next) => {
   if (users.length === 0) {
     throw new ErrorHandler(404, "User not found");
   }
-
   const user = users[0];
-
   user.skills = user.skills || [];
-
   res.json(user);
 });
 
@@ -142,6 +139,10 @@ export const updateResume = TryCatch(async (req: AuthenticatedRequest, res) => {
   });
 });
 
+
+
+
+
 export const addSkillToUser = TryCatch(
   async (req: AuthenticatedRequest, res) => {
     const userId = req.user?.user_id;
@@ -220,6 +221,9 @@ export const deleteSkillFromUser = TryCatch(
     });
   }
 );
+
+
+
 
 export const applyForJob = TryCatch(async (req: AuthenticatedRequest, res) => {
   const user = req.user;
