@@ -7,63 +7,6 @@ import { TryCatch } from "../utils/TryCatch.js";
 import { applicationStatusUpdateTemplate } from "../tempelete.js";
 import { publishToTopic } from "../producer.js";
 
-export const createCompany = TryCatch(
-  async (req: AuthenticatedRequest, res) => {
-    const user = req.user;
-
-    if (!user) {
-      throw new ErrorHandler(401, "Authentication required");
-    }
-
-    if (user.role !== "recruiter") {
-      throw new ErrorHandler(
-        403,
-        "Forbidden: Only recruiter can create a company"
-      );
-    }
-
-    const { name, description, website } = req.body;
-
-    if (!name || !description || !website) {
-      throw new ErrorHandler(400, "All the fields required");
-    }
-
-    const existingCompanies =
-      await sql`SELECT company_id FROM companies WHERE name = ${name}`;
-
-    if (existingCompanies.length > 0) {
-      throw new ErrorHandler(
-        409,
-        `A company with the name ${name} already exists`
-      );
-    }
-
-    const file = req.file;
-
-    if (!file) {
-      throw new ErrorHandler(400, "Company Logo file is required");
-    }
-
-    const fileBuffer = getBuffer(file);
-
-    if (!fileBuffer || !fileBuffer.content) {
-      throw new ErrorHandler(500, "Failed to create file buffer");
-    }
-
-    const { data } = await axios.post(
-      `${process.env.UPLOAD_SERVICE}/api/utils/upload`,
-      { buffer: fileBuffer.content }
-    );
-
-    const [newCompany] =
-      await sql`INSERT INTO companies (name, description, website, logo, logo_public_id, recruiter_id) VALUES (${name}, ${description}, ${website}, ${data.url}, ${data.public_id}, ${req.user?.user_id}) RETURNING *`;
-
-    res.json({
-      message: "Company created successfully",
-      company: newCompany,
-    });
-  }
-);
 
 export const deleteCompany = TryCatch(
   async (req: AuthenticatedRequest, res) => {
