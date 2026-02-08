@@ -7,25 +7,80 @@ import { TryCatch } from "../utils/TryCatch.js";
 import { applicationStatusUpdateTemplate } from "../tempelete.js";
 import { publishToTopic } from "../producer.js";
 
+export const createCompany = TryCatch(
+  async (req: AuthenticatedRequest, res) => {
+    const user = req.user;
+
+    if (!user) {
+      throw new ErrorHandler(401, "Authentication required");
+    }
+
+    if (user.role !== "recruiter") {
+      throw new ErrorHandler(
+        403,
+        "Forbidden: Only recruiter can create a company"
+      );
+    }
+
+    const { name, description, website } = req.body;
+
+    if (!name || !description || !website) {
+      throw new ErrorHandler(400, "All the fields required");
+    }
+
+    const existingCompanies =
+      await sql`SELECT company_id FROM companies WHERE name = ${name}`;
+
+    if (existingCompanies.length > 0) {
+      throw new ErrorHandler(
+        409,
+        `A company with the name ${name} already exists`
+      );
+    }
+
+    const file = req.file;
+
+    if (!file) {
+      throw new ErrorHandler(400, "Company Logo file is required");
+    }
+
+    const fileBuffer = getBuffer(file);
+
+    if (!fileBuffer || !fileBuffer.content) {
+      throw new ErrorHandler(500, "Failed to create file buffer");
+    }
+
+    const { data } = await axios.post(
+      `${process.env.UPLOAD_SERVICE}/api/utils/upload`,
+      { buffer: fileBuffer.content }
+    );
+
+    const [newCompany] =
+      await sql`INSERT INTO companies (name, description, website, logo, logo_public_id, recruiter_id) VALUES (${name}, ${description}, ${website}, ${data.url}, ${data.public_id}, ${req.user?.user_id}) RETURNING *`;
+
+    res.json({
+      message: "Company created successfully",
+      company: newCompany,
+    });
+  }
+);
 
 export const deleteCompany = TryCatch(
   async (req: AuthenticatedRequest, res) => {
     const user = req.user;
 
     const { companyId } = req.params;
-
+    
+    // to delete company, recruiterid must be the userId of who created company and he must be loggedin
+    // so no other recruiter can delete anothers company
     const [company] =
       await sql`SELECT logo_public_id FROM companies WHERE company_id = ${companyId} AND recruiter_id = ${user?.user_id}`;
 
-    if (!company) {
-      throw new ErrorHandler(
-        404,
-        "Company not found or you're not authorized to delete it."
+    if (!company) { throw new ErrorHandler(
+        404,  "Company not found or you're not authorized to delete it."
       );
     }
-
     await sql`DELETE FROM companies WHERE company_id = ${companyId}`;
-
     res.json({
       message: "Company and all associated jobs have been deleted",
     });
@@ -172,13 +227,10 @@ export const getAllActiveJobs = TryCatch(async (req, res) => {
     title?: string;
     location?: string;
   };
-
   let querySting = `SELECT j.job_id, j.title, j.description, j.salary, j.location, j.job_type, j.role, j.work_location, j.created_at, c.name AS company_name, c.logo AS company_logo, c.company_id AS company_id FROM jobs j JOIN companies c ON j.company_id = c.company_id WHERE j.is_active = true`;
 
   const values = [];
-
   let paramIndex = 1;
-
   if (title) {
     querySting += ` AND j.title ILIKE $${paramIndex}`;
     values.push(`%${title}%`);
