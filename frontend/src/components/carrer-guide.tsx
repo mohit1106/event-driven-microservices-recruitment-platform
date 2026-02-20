@@ -275,7 +275,30 @@ const CarrerGuide = () => {
                     </div>
                   </div>
 
-                  
+                  {/* Learning approch */}
+                  <div className="p-4 rounded-lg border bg-blue-950/20 dark:bg-red-950/20">
+                    <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
+                      <BookOpen size={20} className="text-gray-600" />
+                      {response?.learningApproach?.title}
+                    </h3>
+
+                    <ul className="space-y-2">
+                      {response?.learningApproach?.points?.map(
+                        (point, index) => (
+                          <li
+                            key={index}
+                            className="text-sm flex items-start gap-2"
+                          >
+                            <span className="text-gray-600 mt-0.5">•</span>
+                            <span
+                              className="opacity-90"
+                              dangerouslySetInnerHTML={{ __html: point }}
+                            />
+                          </li>
+                        )
+                      )}
+                    </ul>
+                  </div>
 
                   <Button
                     onClick={resetDialog}
