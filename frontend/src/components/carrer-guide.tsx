@@ -186,10 +186,10 @@ const CarrerGuide = () => {
 
                 <div className="space-y-6 py-4">
                   {/* summary */}
-                  <div className="p-4 rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-b-blue-200 dark:border-b-blue-800">
+                  <div className="p-4 rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-b-blue-200 dark:border-b-gray-800">
                     <div className="flex items-start gap-3">
                       <Lightbulb
-                        className="text-blue-600 mt-1 shrink-0"
+                        className="text-gray-600 mt-1 shrink-0"
                         size={20}
                       />
                       <div>
@@ -204,13 +204,13 @@ const CarrerGuide = () => {
                   {/* job options */}
                   <div>
                     <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
-                      <Briefcase size={20} className="text-blue-600" />
+                      <Briefcase size={20} className="text-gray-600" />
                       Recomended Carrer Paths
                     </h3>
                     <div className="space-y-3">
                       {response.jobOptions.map((job, index) => (
                         <div
-                          className="p-4 rounded-lg border hover:border-blue-500 transition-colors"
+                          className="p-4 rounded-lg border hover:border-gray-500 transition-colors"
                           key={index}
                         >
                           <h4 className="font-semibold text-base mb-2">
@@ -239,13 +239,13 @@ const CarrerGuide = () => {
                   {/* Skills to learn */}
                   <div>
                     <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
-                      <TrendingUp size={20} className="text-blue-600" />
+                      <TrendingUp size={20} className="text-gray-600" />
                       Skills to Enhance Your Carrer
                     </h3>
                     <div className="space-y-4">
                       {response.skillsToLearn.map((category, index) => (
                         <div className="space-y-2" key={index}>
-                          <h4 className="font-semibold text-sm text-blue-600">
+                          <h4 className="font-semibold text-sm text-gray-600">
                             {category.category}
                           </h4>
                           <div className="space-y-2">
@@ -275,30 +275,7 @@ const CarrerGuide = () => {
                     </div>
                   </div>
 
-                  {/* Learning approch */}
-                  <div className="p-4 rounded-lg border bg-blue-950/20 dark:bg-red-950/20">
-                    <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
-                      <BookOpen size={20} className="text-blue-600" />
-                      {response?.learningApproach?.title}
-                    </h3>
-
-                    <ul className="space-y-2">
-                      {response?.learningApproach?.points?.map(
-                        (point, index) => (
-                          <li
-                            key={index}
-                            className="text-sm flex items-start gap-2"
-                          >
-                            <span className="text-blue-600 mt-0.5">•</span>
-                            <span
-                              className="opacity-90"
-                              dangerouslySetInnerHTML={{ __html: point }}
-                            />
-                          </li>
-                        )
-                      )}
-                    </ul>
-                  </div>
+                  
 
                   <Button
                     onClick={resetDialog}
