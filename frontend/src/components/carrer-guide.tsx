@@ -81,7 +81,7 @@ const CarrerGuide = () => {
     <div className="max-w-7xl mx-auto px-4 py-16">
       <div className="text-center mb-12">
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border bg-blue-50 dark:bg-blue-950 mb-4">
-          <Sparkles size={16} className="text-blue-600" />
+          <Sparkles size={16} className="text-gray-600" />
           <span className="text-sm font-medium">
             AI-Powered Carrer Guidence
           </span>
@@ -108,7 +108,7 @@ const CarrerGuide = () => {
               <>
                 <DialogHeader>
                   <DialogTitle className="text-2xl flex items-center gap-2">
-                    <Sparkles className="text-blue-600" />
+                    <Sparkles className="text-gray-600" />
                     Tell us about your skills
                   </DialogTitle>
                   <DialogDescription>
@@ -142,7 +142,7 @@ const CarrerGuide = () => {
                         {skills.map((s) => (
                           <div
                             key={s}
-                            className="inline-flex items-center gap-2 pl-3 pr-2 py-1.5 rounded-full bg-blue-100 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-800"
+                            className="inline-flex items-center gap-2 pl-3 pr-2 py-1.5 rounded-full bg-blue-100 dark:bg-blue-900/30 border border-blue-200 dark:border-gray-800"
                           >
                             <span className="text-sm font-medium">{s}</span>
                             <button
@@ -179,7 +179,7 @@ const CarrerGuide = () => {
               <>
                 <DialogHeader>
                   <DialogTitle className="text-2xl flex items-center gap-2">
-                    <Target className="text-blue-600" />
+                    <Target className="text-gray-600" />
                     Your Personlized Carrer Guide
                   </DialogTitle>
                 </DialogHeader>

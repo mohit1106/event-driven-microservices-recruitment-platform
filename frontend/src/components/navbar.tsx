@@ -29,14 +29,13 @@ const NavBar = () => {
             <Link href={"/"} className="flex items-center gap-1 group">
               <div className="text-2xl font-bold tracking-tight">
                 <span className="bg-linear-to-r from bg-blue-600 to-blue-800 bg-clip-text text-transparent">
-                  Hire
+                  Eleven
                 </span>
-                <span className="text-red-500">Heaven</span>
+                <span className="text-red-500">Hire</span>
               </div>
             </Link>
           </div>
 
-          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-1">
             <Link href={"/"}>
               <Button
