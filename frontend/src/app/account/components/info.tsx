@@ -89,7 +89,7 @@ const Info: React.FC<AccontProps> = ({ user, isYourAccount }) => {
   return (
     <div className="max-w-5xl mx-auto px-4 py-8">
       <Card className="overflow-hidden shadow-lg border-2">
-        <div className="h-32 bg-blue-500 relative">
+        <div className="h-32 bg-gray-500 relative">
           <div className="absolute -bottom-16 left-8">
             <div className="relative group">
               <div className="w-32 h-32 rounded-full border-4 border-background overflow-hidden shadow-xl bg-background">
@@ -124,6 +124,8 @@ const Info: React.FC<AccontProps> = ({ user, isYourAccount }) => {
             </div>
           </div>
         </div>
+
+
 
         {/* Main content */}
         <div className="pt-20 pb-8 px-8">
