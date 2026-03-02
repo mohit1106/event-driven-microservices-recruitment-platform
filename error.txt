@@ -1,0 +1,21 @@
+# Codebase Observations & Potential Issues
+
+Overall, the codebase is well-structured and follows microservice patterns effectively. I did not find any critical compilation errors or immediately breaking logic bugs that would prevent the services from starting, provided the environment variables are correctly set. 
+
+However, here are a few minor observations and potential edge cases found during the scan:
+
+## 1. Environment Variable Casing
+- In `auth.ts` (Auth Service), `process.env.Frontend_Url` is used. Standard convention usually dictates uppercase `FRONTEND_URL`. Ensure `.env` files match this exactly or it will result in `undefined` reset links.
+- Same applies to `Redis_url` and `Razorpay_Key` / `Razorpay_Secret`. Ensure `.env` matches the exact casing used in code.
+
+## 2. Minor Typos
+- In `job.ts` (Job Service, line 230), the variable is named `querySting` instead of `queryString`. This doesn't affect functionality since it is used consistently, but fixing it improves code readability.
+
+## 3. Resume Object Structure
+- In `user.ts` (User Service, line 241), when applying for a job, `const resume = user.resume;` is inserted into the `applications` table. If `resume` is expected to be a string URL, this works fine. However, if the frontend sends an object or if the DB expects a specific format, ensure it aligns. Currently, it seems to be correctly storing the Cloudinary URL string.
+
+## 4. API Gateway Missing
+- The services are currently independent Express applications. Without an API Gateway (like Nginx, Kong, or an Express-based gateway), the Next.js frontend has to handle multiple different base URLs (e.g., `http://localhost:5001` for auth, `http://localhost:5002` for job, etc.). Implementing an API gateway would aggregate these into a single entry point.
+
+## 5. Centralized Database Initialization
+- Currently, the Neon Serverless PostgreSQL database structures (tables) are created in the `index.ts` of the respective microservices (`auth` and `job`). While this works for initial setup, using a migration tool (like Prisma Migrations, TypeORM, or knex) would make schema evolution much safer and trackable in production.

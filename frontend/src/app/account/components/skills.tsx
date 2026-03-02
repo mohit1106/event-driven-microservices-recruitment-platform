@@ -38,7 +38,7 @@ const Skills: React.FC<AccontProps> = ({ user, isYourAccount }) => {
   return (
     <div className="max-w-5xl mx-auto px-4 py-6">
       <Card className="shadow-lg border-2 overflow-hidden">
-        <div className="bg-blue-500 p-6 border-b">
+        <div className="bg-gray-500 p-6 border-b">
           <div className="flex items-center gap-3 mb-4">
             <div className="h-10 w-10 rounded-lg bg-blue-100 dark:bg-blue-900 flex items-center justify-center">
               <Award size={20} className="text-blue-600" />

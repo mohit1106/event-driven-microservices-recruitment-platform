@@ -137,11 +137,11 @@ const Company = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 py-6">
       <Card className="shadow-lg border-2 overflow-hidden">
-        <div className="bg-blue-500 p-6 border-b">
+        <div className="bg-gray-500 p-6 border-b">
           <div className="flex items-center justify-between flex-wrap gap-4">
             <div className="flex items-center gap-3">
-              <div className="h-10 w-10 rounded-lg bg-blue-100 dark:bg-blue-900 flex items-center justify-center">
-                <Building2 size={20} className="text-blue-600" />
+              <div className="h-10 w-10 rounded-lg bg-blue-100 dark:bg-gray-900 flex items-center justify-center">
+                <Building2 size={20} className="text-gray-600" />
               </div>
             </div>
             <CardTitle className="text-2xl text-white">My Companies</CardTitle>
