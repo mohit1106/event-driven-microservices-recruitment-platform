@@ -103,7 +103,7 @@ const LoginPage = () => {
             <div className="flex items-center justify-end">
               <Link
                 href={"/forgot"}
-                className="text-sm text-blue-500 hover:underline transition-all"
+                className="text-sm text-gray-500 hover:underline transition-all"
               >
                 Forgot Password?
               </Link>
@@ -120,7 +120,7 @@ const LoginPage = () => {
               Don't have an account?{" "}
               <Link
                 href={"/register"}
-                className="text-blue-500 font-medium hover:underline transition-all"
+                className="text-gray-500 font-medium hover:underline transition-all"
               >
                 Create a new account?
               </Link>

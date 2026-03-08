@@ -244,8 +244,8 @@ pointer hover:border-blue-500 transition-colors"
 
                   {/* Summary */}
                   <div
-                    className="p-4 rounded-lg bg-blue-50 dark:bg-blue-950/30 border 
-border-blue-200 dark:border-blue-800"
+                    className="p-4 rounded-lg bg-gray-50 dark:bg-gray-950/30 border 
+border-gray-200 dark:border-gray-800"
                   >
                     <p className="text-sm leading-relaxed">
                       {response.summary}

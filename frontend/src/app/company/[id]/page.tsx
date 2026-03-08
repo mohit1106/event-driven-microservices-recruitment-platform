@@ -555,7 +555,7 @@ const CompanyPage = () => {
                         <Briefcase size={32} className="opacity-40" />
                       </div>
                       <p className="text-base opacity-70 mb-2">
-                        No jobs postet yet
+                        No jobs posted yet
                       </p>
                     </div>
                   </>

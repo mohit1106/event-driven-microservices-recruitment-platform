@@ -62,7 +62,7 @@ const ForgotPage = () => {
         </form>
 
         <Link
-          className="mt-2 text-blue-500 underline text-sm ml-2"
+          className="mt-2 text-gray-500 underline text-sm ml-2"
           href={"/login"}
         >
           Go to login page

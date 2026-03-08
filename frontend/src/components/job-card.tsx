@@ -36,11 +36,11 @@ const JobCard: React.FC<JobCardProps> = ({ job }) => {
   }, [applications, job.job_id]);
 
   return (
-    <Card className="w-full max-w-[380px] hover:shadow-lg transition-all duration-300 border-2 hover:border-blue-500 group">
+    <Card className="w-full max-w-[380px] hover:shadow-lg transition-all duration-300 border-2 hover:border-gray-500 group">
       <CardHeader className="space-y-4 pb-4">
         <div className="flex items-start justify-between gap-3">
           <div className="flex-1 min-w-0">
-            <h3 className="text-xl font-bold mb-2 line-clamp-2 group-hover:text-blue-600 transition-colors">
+            <h3 className="text-xl font-bold mb-2 line-clamp-2 group-hover:text-gray-600 transition-colors">
               {job.title}
             </h3>
             <div className="flex items-center gap-2 text-sm opacity-70">
@@ -62,7 +62,7 @@ const JobCard: React.FC<JobCardProps> = ({ job }) => {
 
         <div className="space-y-2">
           <div className="flex items-center gap-2 text-sm">
-            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600">
+            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gray-100 dark:bg-gray-900/30 text-gray-600">
               <MapPin size={14} />
               <span className="font-medium">{job.location}</span>
             </div>

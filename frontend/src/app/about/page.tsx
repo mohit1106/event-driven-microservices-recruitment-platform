@@ -21,8 +21,8 @@ const About = () => {
           {/* Content */}
           <div className="text-center space-y-6">
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold">
-              Our Mission At Hire
-              <span className="text-red-500">Heaven</span>
+              Our Mission At Eleven
+              <span className="text-red-500">Hire</span>
             </h1>
 
             <p

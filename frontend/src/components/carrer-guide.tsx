@@ -80,7 +80,7 @@ const CarrerGuide = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 py-16">
       <div className="text-center mb-12">
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border bg-blue-50 dark:bg-blue-950 mb-4">
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border bg-gray-50 dark:bg-gray-950 mb-4">
           <Sparkles size={16} className="text-gray-600" />
           <span className="text-sm font-medium">
             AI-Powered Carrer Guidence
@@ -142,7 +142,7 @@ const CarrerGuide = () => {
                         {skills.map((s) => (
                           <div
                             key={s}
-                            className="inline-flex items-center gap-2 pl-3 pr-2 py-1.5 rounded-full bg-blue-100 dark:bg-blue-900/30 border border-blue-200 dark:border-gray-800"
+                            className="inline-flex items-center gap-2 pl-3 pr-2 py-1.5 rounded-full bg-gray-100 dark:bg-gray-900/30 border border-gray-200 dark:border-gray-800"
                           >
                             <span className="text-sm font-medium">{s}</span>
                             <button
@@ -186,7 +186,7 @@ const CarrerGuide = () => {
 
                 <div className="space-y-6 py-4">
                   {/* summary */}
-                  <div className="p-4 rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-b-blue-200 dark:border-b-gray-800">
+                  <div className="p-4 rounded-lg bg-gray-50 dark:bg-gray-950/30 border border-b-gray-200 dark:border-b-gray-800">
                     <div className="flex items-start gap-3">
                       <Lightbulb
                         className="text-gray-600 mt-1 shrink-0"
@@ -276,7 +276,7 @@ const CarrerGuide = () => {
                   </div>
 
                   {/* Learning approch */}
-                  <div className="p-4 rounded-lg border bg-blue-950/20 dark:bg-red-950/20">
+                  <div className="p-4 rounded-lg border bg-gray-950/20 dark:bg-red-950/20">
                     <h3 className="text-lg font-semibold mb-3 flex items-center gap-2">
                       <BookOpen size={20} className="text-gray-600" />
                       {response?.learningApproach?.title}

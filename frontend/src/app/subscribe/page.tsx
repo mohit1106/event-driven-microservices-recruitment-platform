@@ -39,7 +39,7 @@ const SubscriptionPage = () => {
       key: "rzp_test_RaL8PDo9YBejEW", // Replace with your Razorpay key_id
       amount: order.id, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
       currency: "INR",
-      name: "Hire Heaven",
+      name: "ElevenHire",
       description: "Find job easily",
       order_id: order.id, // This is the order_id created in the backend
       handler: async function (response: any) {
