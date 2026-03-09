@@ -29,17 +29,7 @@ const JobPage = () => {
 
   const [applied, setApplied] = useState(false);
 
-  useEffect(() => {
-    if (applications && id) {
-      applications.forEach((item: any) => {
-        if (item.job_id.toString() === id) setApplied(true);
-      });
-    }
-  }, [applications, id]);
-
-  const applyJobHandler = (id: number) => {
-    applyJob(id);
-  };
+  
 
   const [loading, setLoading] = useState(true);
 

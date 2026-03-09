@@ -83,7 +83,7 @@ const JobsPage = () => {
           <div className="flex items-center justify-between flex-wrap gap-4 mb-4">
             <div>
               <h1 className="text-3xl md:text-4xl font-bold mb-2">
-                Explore <span className="text-red-500">Oppertunities</span>
+                Explore <span className="text-red-500">Opportunities</span>
               </h1>
               <p className="text-base opacity-70">{jobs.length} jobs</p>
             </div>
