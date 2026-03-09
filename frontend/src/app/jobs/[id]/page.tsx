@@ -29,7 +29,17 @@ const JobPage = () => {
 
   const [applied, setApplied] = useState(false);
 
-  
+  useEffect(() => {
+    if (applications && id) {
+      applications.forEach((item: any) => {
+        if (item.job_id.toString() === id) setApplied(true);
+      });
+    }
+  }, [applications, id]);
+
+  const applyJobHandler = (id: number) => {
+    applyJob(id);
+  };
 
   const [loading, setLoading] = useState(true);
 
@@ -121,7 +131,7 @@ const JobPage = () => {
               </Button>
 
               <Card className="overflow-hidden shadow-lg border-2 mb-6">
-                <div className="bg-blue-600 p-8 border-b">
+                <div className="bg-gray-600 p-8 border-b">
                   <div className="flex items-start justify-between gap-4 flex-wrap">
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-3">
@@ -314,7 +324,7 @@ const JobPage = () => {
                         }
                       >
                         Update
-                      </Button>
+                      </Button> 
                     </div>
                   </div>
                 ))}
